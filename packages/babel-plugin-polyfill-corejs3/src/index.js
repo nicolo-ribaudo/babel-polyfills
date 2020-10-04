@@ -27,8 +27,15 @@ type Options = {|
 
 export default defineProvider<Options>(function(
   { getUtils, method, shouldInjectPolyfill, createMetaResolver, debug, babel },
-  { version = 3, proposals, shippedProposals },
+  { version, proposals, shippedProposals },
 ) {
+  if (version == null) {
+    throw new Error(
+      `"babel-plugin-polyfill-corejs3" expects a "version" option,` +
+        ` which should match the core-js version specified in your dependencies.`,
+    );
+  }
+
   const isWebpack = babel.caller(caller => caller?.name === "babel-loader");
 
   const resolve = createMetaResolver({

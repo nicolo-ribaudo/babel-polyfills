@@ -3,7 +3,8 @@
     [
       "@@/polyfill-corejs3",
       {
-        "method": "usage-pure"
+        "method": "usage-pure",
+        "version": 3
       }
     ]
   ]

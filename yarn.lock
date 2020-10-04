@@ -233,7 +233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-define-polyfill-provider@^0.0.3, @babel/helper-define-polyfill-provider@workspace:packages/babel-helper-define-polyfill-provider":
+"@babel/helper-define-polyfill-provider@^0.0.4, @babel/helper-define-polyfill-provider@workspace:packages/babel-helper-define-polyfill-provider":
   version: 0.0.0-use.local
   resolution: "@babel/helper-define-polyfill-provider@workspace:packages/babel-helper-define-polyfill-provider"
   dependencies:
@@ -3871,7 +3871,7 @@ __metadata:
   dependencies:
     "@babel/compat-data": ^7.11.0
     "@babel/core": ^7.11.5
-    "@babel/helper-define-polyfill-provider": ^0.0.3
+    "@babel/helper-define-polyfill-provider": ^0.0.4
     "@babel/helper-plugin-test-runner": ^7.10.4
     "@babel/plugin-transform-for-of": ^7.10.4
     "@babel/plugin-transform-modules-commonjs": ^7.10.4
@@ -3886,7 +3886,7 @@ __metadata:
   resolution: "babel-plugin-polyfill-corejs3@workspace:packages/babel-plugin-polyfill-corejs3"
   dependencies:
     "@babel/core": ^7.11.5
-    "@babel/helper-define-polyfill-provider": ^0.0.3
+    "@babel/helper-define-polyfill-provider": ^0.0.4
     "@babel/helper-plugin-test-runner": ^7.10.4
     "@babel/plugin-syntax-dynamic-import": ^7.8.3
     "@babel/plugin-transform-for-of": ^7.10.4
@@ -3902,7 +3902,7 @@ __metadata:
   resolution: "babel-plugin-polyfill-es-shims@workspace:packages/babel-plugin-polyfill-es-shims"
   dependencies:
     "@babel/core": ^7.11.5
-    "@babel/helper-define-polyfill-provider": ^0.0.3
+    "@babel/helper-define-polyfill-provider": ^0.0.4
     "@babel/helper-plugin-test-runner": ^7.10.4
   peerDependencies:
     "@babel/core": ^7.0.0-0
@@ -3914,7 +3914,7 @@ __metadata:
   resolution: "babel-plugin-polyfill-regenerator@workspace:packages/babel-plugin-polyfill-regenerator"
   dependencies:
     "@babel/core": ^7.11.5
-    "@babel/helper-define-polyfill-provider": ^0.0.3
+    "@babel/helper-define-polyfill-provider": ^0.0.4
     "@babel/helper-plugin-test-runner": ^7.10.4
   peerDependencies:
     "@babel/core": ^7.0.0-0

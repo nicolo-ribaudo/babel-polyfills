@@ -4,6 +4,7 @@
       "@@/polyfill-corejs3",
       {
         "method": "usage-global",
+        "version": 3,
         "targets": {
           "browsers": "ie > 10"
         }

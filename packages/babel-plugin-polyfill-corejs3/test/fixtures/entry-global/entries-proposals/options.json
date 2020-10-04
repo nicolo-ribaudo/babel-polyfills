@@ -3,7 +3,8 @@
     [
       "@@/polyfill-corejs3",
       {
-        "method": "entry-global"
+        "method": "entry-global",
+        "version": 3
       }
     ]
   ]

@@ -4,6 +4,8 @@
       "@@/polyfill-corejs3",
       {
         "method": "usage-pure",
+        "version": 3,
+        "version": 3,
         "targets": {
           "chrome": 30
         }
