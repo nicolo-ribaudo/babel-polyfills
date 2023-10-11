@@ -25,9 +25,11 @@ function resolveId(path): string {
     return path.node.name;
   }
 
-  const { deopt } = path.evaluate();
-  if (deopt && deopt.isIdentifier()) {
-    return deopt.node.name;
+  if (path.isPure()) {
+    const { deopt } = path.evaluate();
+    if (deopt && deopt.isIdentifier()) {
+      return deopt.node.name;
+    }
   }
 }
 
@@ -55,7 +57,11 @@ export function resolveKey(
     if (sym) return "Symbol." + sym;
   }
 
-  if (!isIdentifier || scope.hasBinding(path.node.name, /* noGlobals */ true)) {
+  if (
+    isIdentifier
+      ? scope.hasBinding(path.node.name, /* noGlobals */ true)
+      : path.isPure()
+  ) {
     const { value } = path.evaluate();
     if (typeof value === "string") return value;
   }
@@ -82,13 +88,15 @@ export function resolveSource(obj: NodePath): {
     return { id, placement: "static" };
   }
 
-  const { value } = obj.evaluate();
-  if (value !== undefined) {
-    return { id: getType(value), placement: "prototype" };
-  } else if (obj.isRegExpLiteral()) {
+  if (obj.isRegExpLiteral()) {
     return { id: "RegExp", placement: "prototype" };
   } else if (obj.isFunction()) {
     return { id: "Function", placement: "prototype" };
+  } else if (obj.isPure()) {
+    const { value } = obj.evaluate();
+    if (value !== undefined) {
+      return { id: getType(value), placement: "prototype" };
+    }
   }
 
   return { id: null, placement: null };
