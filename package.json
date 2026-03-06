@@ -47,7 +47,8 @@
     "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
-    "jest": "^27.5.1",
+    "jest": "^30.2.0",
+    "jest-light-runner": "^0.7.11",
     "lerna": "^3.22.1",
     "lodash": "^4.17.23",
     "prettier": "^3.8.1",
@@ -72,6 +73,7 @@
     "test/esm"
   ],
   "jest": {
+    "runner": "jest-light-runner",
     "testRegex": "./packages/[^/]+/test/.+\\.m?js$",
     "testPathIgnorePatterns": [
       "/node_modules/",

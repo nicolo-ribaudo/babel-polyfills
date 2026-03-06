@@ -1,33 +1,32 @@
 import * as babel from "@babel/core";
-import { join } from "path";
+import * as path from "path";
 import { readFileSync, writeFileSync } from "fs";
+import { fileURLToPath } from "url";
 
-function transformTest(name, cwd, file, options = {}) {
+function transformTest(name, cwdURL, file, options = {}) {
   it(name, () => {
-    const inputPath = join(cwd, file);
-    const outputPath = join(cwd, file.replace(".js", ".out.js"));
+    const inputURL = new URL(file, cwdURL);
+    const outputURL = new URL(file.replace(".js", ".out.js"), cwdURL);
 
-    const input = readFileSync(inputPath, "utf8");
+    const input = readFileSync(inputURL, "utf8");
     let expected;
     try {
-      expected = readFileSync(outputPath, "utf8");
+      expected = readFileSync(outputURL, "utf8");
     } catch {
       // file not yet created
     }
 
     let { code } = babel.transformSync(input, {
-      cwd,
-      filename: inputPath,
+      cwd: fileURLToPath(cwdURL),
+      filename: fileURLToPath(inputURL),
       ...options,
     });
 
-    code = code.replace(
-      new RegExp(__dirname.replace(/\\/g, "/"), "g"),
-      "<CWD>",
-    );
+    const dirname = path.dirname(fileURLToPath(import.meta.url));
+    code = code.replace(new RegExp(dirname.replace(/\\/g, "/"), "g"), "<CWD>");
 
     if (expected === undefined) {
-      writeFileSync(outputPath, code);
+      writeFileSync(outputURL, code);
     } else {
       expect(code).toBe(expected);
     }
@@ -35,7 +34,7 @@ function transformTest(name, cwd, file, options = {}) {
 }
 
 describe("true", () => {
-  const cwd = join(__dirname, "fixtures", "absoluteImports", "true");
+  const cwd = new URL("./fixtures/absoluteImports/true/", import.meta.url);
 
   transformTest("basic behavior", cwd, "main.js");
   transformTest("relative to config file", cwd, "nested/main.js");
@@ -43,13 +42,13 @@ describe("true", () => {
 });
 
 describe("string", () => {
-  const cwd = join(__dirname, "fixtures", "absoluteImports", "string");
+  const cwd = new URL("./fixtures/absoluteImports/string/", import.meta.url);
 
   transformTest("basic behavior", cwd, "main.js");
 });
 
 describe("subpath", () => {
-  const cwd = join(__dirname, "fixtures", "absoluteImports", "subpath");
+  const cwd = new URL("./fixtures/absoluteImports/subpath/", import.meta.url);
 
   transformTest("works", cwd, "main.js");
 });

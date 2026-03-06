@@ -1,4 +1,4 @@
-import corejs3Entries from "../core-js-compat/entries";
+import corejs3Entries from "core-js-compat/entries.json" with { type: "json" };
 
 import {
   BuiltIns,

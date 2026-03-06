@@ -2,6 +2,7 @@ import cp from "child_process";
 import fs from "fs";
 import path from "path";
 import stripAnsi from "strip-ansi";
+import { fileURLToPath } from "url";
 
 function execP(cmd, opts) {
   const normalize = buff => stripAnsi(buff + "").trim();
@@ -20,7 +21,7 @@ function execP(cmd, opts) {
 describe("missingDependencies", () => {
   it("logs with @babel/cli", async () => {
     const { stdout, stderr, exitCode } = await execP("yarn babel in -d out", {
-      cwd: __dirname + "/spawn-fixtures/cli",
+      cwd: new URL("./spawn-fixtures/cli", import.meta.url),
     });
 
     expect(exitCode).not.toBe(0);
@@ -37,7 +38,7 @@ describe("missingDependencies", () => {
   });
 
   it("logs with webpack", async () => {
-    const cwd = path.join(__dirname, "spawn-fixtures/webpack/");
+    const cwd = new URL("./spawn-fixtures/webpack/", import.meta.url);
     const { stdout, stderr, exitCode } = await execP("yarn webpack", { cwd });
 
     expect(exitCode).not.toBe(0);
@@ -50,7 +51,10 @@ describe("missingDependencies", () => {
       // compilation time)
       .replace(/^.*\[built]\s*/s, "")
       // Replace env-specific directory path
-      .replace(new RegExp(cwd.replace(/\\/g, "\\\\"), "g"), "<CWD>/");
+      .replace(
+        new RegExp(fileURLToPath(cwd).replace(/\\/g, "\\\\"), "g"),
+        "<CWD>/",
+      );
 
     expect(out).toMatchInlineSnapshot(`
       "ERROR in ./src/dep.js
@@ -70,7 +74,10 @@ describe("missingDependencies", () => {
       	yarn add ___a___not_a_real_pkg___ ___b___not_a_real_pkg___"
     `);
 
-    const output = await fs.promises.readFile(cwd + "/output.js", "utf8");
+    const output = await fs.promises.readFile(
+      new URL("./output.js", cwd),
+      "utf8",
+    );
 
     expect(output).toMatch(/Cannot find module '___b___not_a_real_pkg___/);
     expect(output).toMatch(/Cannot find module '___a___not_a_real_pkg___/);
@@ -78,7 +85,7 @@ describe("missingDependencies", () => {
 
   it("logs with rollup", async () => {
     const { stdout, stderr, exitCode } = await execP("yarn rollup -c", {
-      cwd: __dirname + "/spawn-fixtures/rollup",
+      cwd: new URL("./spawn-fixtures/rollup", import.meta.url),
     });
 
     expect(exitCode).not.toBe(0);
@@ -109,27 +116,28 @@ describe("missingDependencies", () => {
 describe("debug", () => {
   it("logs correct reasons for including a polyfill", async () => {
     const { stdout, exitCode } = await execP("yarn babel input.mjs", {
-      cwd: __dirname + "/spawn-fixtures/debug",
+      cwd: new URL("./spawn-fixtures/debug", import.meta.url),
     });
 
+    const dirname = path.dirname(fileURLToPath(import.meta.url));
     const out = stdout
-      .replace(new RegExp(__dirname.replace(/\\/g, "\\\\"), "g"), "<CWD>")
+      .replace(new RegExp(dirname.replace(/\\/g, "\\\\"), "g"), "<CWD>")
       .replace(/\\/g, "/");
 
     expect(out).toMatchInlineSnapshot(`
       "test: \`DEBUG\` option
 
       Using targets: {
-        \\"firefox\\": \\"67\\",
-        \\"ie\\": \\"11\\"
+        "firefox": "67",
+        "ie": "11"
       }
 
       Using polyfills with \`entry-global\` method:
 
       [<CWD>/spawn-fixtures/debug/input.mjs]
       The test polyfill entry has been replaced with the following polyfills:
-        a { \\"ie\\":\\"11\\" }
-      import \\"core-js\\";"
+        a { "ie":"11" }
+      import "core-js";"
     `);
 
     expect(exitCode).toBe(0);

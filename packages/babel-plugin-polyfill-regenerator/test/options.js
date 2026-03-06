@@ -1,5 +1,5 @@
 import * as babel from "@babel/core";
-import polyfillRegenerator from "../lib";
+import polyfillRegenerator from "../lib/index.js";
 
 function transform(code, babelOpts, pluginOpts) {
   return babel.transformSync(code, {

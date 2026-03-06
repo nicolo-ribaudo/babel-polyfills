@@ -1,5 +1,6 @@
 import { types as t } from "@babel/core";
-import generator from "@babel/generator";
+import _generator from "@babel/generator";
+const generator = _generator.default;
 
 export default {
   test: v => t.isNode(v),
