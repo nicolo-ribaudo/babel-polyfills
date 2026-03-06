@@ -11,6 +11,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "main": "lib/index.js",
   "exports": {
     ".": [
