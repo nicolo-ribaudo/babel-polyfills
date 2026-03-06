@@ -1,12 +1,6 @@
 "use strict";
 
-const plumber = require("gulp-plumber");
-const through = require("through2");
-const chalk = require("chalk");
-const newer = require("gulp-newer");
-const babel = require("gulp-babel");
 const gulpWatch = require("gulp-watch");
-const fancyLog = require("fancy-log");
 const gulp = require("gulp");
 const path = require("path");
 const rollup = require("rollup").rollup;
@@ -21,51 +15,6 @@ const esmBundles = [
   { name: "babel-plugin-polyfill-es-shims" },
   { name: "babel-plugin-polyfill-regenerator" },
 ];
-
-function swapSrcWithLib(srcPath) {
-  const parts = srcPath.split(path.sep);
-  parts[1] = "lib";
-  return parts.join(path.sep);
-}
-
-function compilationLogger() {
-  return through.obj(function (file, enc, callback) {
-    fancyLog(`Compiling '${chalk.cyan(file.relative)}'...`);
-    callback(null, file);
-  });
-}
-
-function errorsLogger() {
-  return plumber({
-    errorHandler(err) {
-      fancyLog(err.stack);
-    },
-  });
-}
-
-function rename(fn) {
-  return through.obj(function (file, enc, callback) {
-    file.path = fn(file);
-    callback(null, file);
-  });
-}
-
-function build() {
-  const base = path.join(__dirname, "packages");
-
-  return gulp
-    .src("./packages/*/src/**/*.{js,ts}", { base: base })
-    .pipe(errorsLogger())
-    .pipe(newer({ dest: base, map: swapSrcWithLib }))
-    .pipe(compilationLogger())
-    .pipe(babel())
-    .pipe(
-      // Passing 'file.relative' because newer() above uses a relative
-      // path and this keeps it consistent.
-      rename(file => path.resolve(file.base, swapSrcWithLib(file.relative)))
-    )
-    .pipe(gulp.dest(base));
-}
 
 async function buildRollup() {
   const base = path.join(__dirname, "packages");
@@ -89,7 +38,6 @@ async function buildRollup() {
         plugins: [
           rollupJson(),
           rollupBabel({
-            envName: "esm",
             babelrc: false,
             babelHelpers: "bundled",
             extends: "./babel.config.json",
@@ -104,21 +52,20 @@ async function buildRollup() {
       });
 
       const outputFile = target
-        ? `${dir}/esm/index.${target}.mjs`
-        : `${dir}/esm/index.mjs`;
+        ? `${dir}/lib/index.${target}.js`
+        : `${dir}/lib/index.js`;
       await bundle.write({
         file: outputFile,
         format: "es",
         sourcemap: true,
         exports: "named",
+        importAttributesKey: "with",
       });
     })
   );
 }
 
-gulp.task("build", () => build());
-
-gulp.task("bundle", () => buildRollup());
+gulp.task("build", () => buildRollup());
 
 gulp.task("default", gulp.series("build"));
 

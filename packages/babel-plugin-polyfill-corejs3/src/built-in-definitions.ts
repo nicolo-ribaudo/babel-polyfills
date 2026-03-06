@@ -1,4 +1,4 @@
-import corejs3Polyfills from "../core-js-compat/data.js";
+import corejs3Polyfills from "core-js-compat/data.json" with { type: "json" };
 
 type ObjectMap<V> = { [name: string]: V };
 type ObjectMap2<V> = ObjectMap<ObjectMap<V>>;

@@ -1,7 +1,9 @@
-module.exports = {
+import genericProvider from "../../helpers/generic-provider.js";
+
+export default {
   plugins: [
     [
-      require("../../helpers/generic-provider.js"),
+      genericProvider,
       {
         method: "usage-global",
         globals: {

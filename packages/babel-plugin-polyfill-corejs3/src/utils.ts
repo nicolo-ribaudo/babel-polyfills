@@ -1,5 +1,5 @@
 import { types as t, type NodePath } from "@babel/core";
-import corejsEntries from "../core-js-compat/entries.js";
+import corejsEntries from "core-js-compat/entries.json" with { type: "json" };
 
 export const BABEL_RUNTIME = "@babel/runtime-corejs3";
 

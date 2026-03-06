@@ -1,6 +1,5 @@
 import * as babel from "@babel/core";
-import _definePolyfillProvider from "../lib/index.js";
-const definePolyfillProvider = _definePolyfillProvider.default;
+import definePolyfillProvider from "../lib/index.node.js";
 
 function transform(code, opts, provider) {
   return babel.transformSync(code, {

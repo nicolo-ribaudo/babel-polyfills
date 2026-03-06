@@ -1,6 +1,6 @@
-import corejs3Polyfills from "../core-js-compat/data.js";
+import corejs3Polyfills from "core-js-compat/data.json" with { type: "json" };
 import corejs3ShippedProposalsList from "./shipped-proposals";
-import getModulesListForTargetVersion from "../core-js-compat/get-modules-list-for-target-version.js";
+import getModulesListForTargetVersion from "core-js-compat/get-modules-list-for-target-version.js";
 import {
   BuiltIns,
   CommonIterators,

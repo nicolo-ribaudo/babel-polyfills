@@ -1,5 +1,4 @@
-import _createMetaResolver from "../lib/meta-resolver.js";
-const createMetaResolver = _createMetaResolver.default;
+import createMetaResolver from "../src/meta-resolver.ts";
 
 describe("createMetaResolver", () => {
   const resolver = createMetaResolver({

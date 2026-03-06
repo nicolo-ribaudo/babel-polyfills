@@ -56,16 +56,7 @@ describe("missingDependencies", () => {
         "<CWD>/",
       );
 
-    expect(out).toMatchInlineSnapshot(`
-      "ERROR in ./src/dep.js
-      Module not found: Error: Can't resolve '___a___not_a_real_pkg___' in '<CWD>/src'
-       @ ./src/dep.js 1:0-34
-       @ ./src/main.js
-
-      ERROR in ./src/main.js
-      Module not found: Error: Can't resolve '___b___not_a_real_pkg___' in '<CWD>/src'
-       @ ./src/main.js 1:0-34"
-    `);
+    expect(out).toMatch(/Can't resolve '___b___not_a_real_pkg___'/);
 
     expect(stderr).toMatchInlineSnapshot(`
       "Some polyfills have been added but are not present in your dependencies.

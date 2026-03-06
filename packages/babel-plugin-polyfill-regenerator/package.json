@@ -14,15 +14,9 @@
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
-  "main": "lib/index.js",
+  "type": "module",
   "exports": {
-    ".": [
-      {
-        "import": "./esm/index.mjs",
-        "default": "./lib/index.js"
-      },
-      "./lib/index.js"
-    ],
+    ".": "./lib/index.js",
     "./package.json": "./package.json"
   },
   "keywords": [

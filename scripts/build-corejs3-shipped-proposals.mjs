@@ -1,4 +1,4 @@
-import compatData from "../packages/babel-plugin-polyfill-corejs3/core-js-compat/data.js";
+import compatData from "core-js-compat/data.json" with { type: "json" };
 import specialCases from "./corejs3-shipped-proposals-special-cases.mjs";
 import fs from "node:fs";
 

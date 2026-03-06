@@ -1,6 +1,10 @@
-const path = require("path");
+import { fileURLToPath } from "url";
+import path from "path";
+import genericProvider from "../../helpers/generic-provider.js";
 
-module.exports = {
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
+
+export default {
   mode: "development",
 
   entry: path.join(__dirname, "src/main.js"),
@@ -18,7 +22,7 @@ module.exports = {
         options: {
           plugins: [
             [
-              require("../../helpers/generic-provider.js"),
+              genericProvider,
               {
                 method: "usage-global",
                 globals: {

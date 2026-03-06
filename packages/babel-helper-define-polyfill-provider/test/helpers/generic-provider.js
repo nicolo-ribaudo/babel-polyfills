@@ -1,6 +1,6 @@
-const defineProvider = require("../..").default;
+import defineProvider from "../../lib/index.node.mjs";
 
-module.exports = defineProvider(function ({ assertDependency }, options) {
+export default defineProvider(function ({ assertDependency }, options) {
   return {
     name: "es-shims",
     polyfills: Object.keys(options.globals),

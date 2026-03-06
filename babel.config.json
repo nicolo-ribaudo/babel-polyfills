@@ -4,21 +4,11 @@
     ["@babel/preset-env", { "loose": true }],
     "@babel/preset-typescript"
   ],
-  "plugins": [
-    "./scripts/babel-plugin-remove-create-require",
-    "./scripts/babel-plugin-compat-core-import"
-  ],
+  "plugins": ["./scripts/babel-plugin-compat-core-import"],
   "targets": { "node": "current" },
   "env": {
     "production": {
-      "targets": { "node": "6.9" }
-    },
-    "esm": {
-      "targets": { "node": "12.20" },
-      "plugins": [
-        // Disable it
-        ["./scripts/babel-plugin-remove-create-require", false]
-      ]
+      "targets": { "node": "20.19" }
     }
   }
 }

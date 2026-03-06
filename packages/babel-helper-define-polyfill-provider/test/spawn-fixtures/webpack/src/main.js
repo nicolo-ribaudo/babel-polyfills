@@ -1,3 +1,3 @@
-import "./dep";
+import "./dep.js";
 
 b;

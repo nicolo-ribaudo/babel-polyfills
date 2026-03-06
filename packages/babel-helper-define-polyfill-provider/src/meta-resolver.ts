@@ -2,9 +2,9 @@ import type {
   MetaDescriptor,
   ResolverPolyfills,
   ResolvedPolyfill,
-} from "./types";
+} from "./types.ts";
 
-import { has } from "./utils";
+import { has } from "./utils.ts";
 
 type ResolverFn<T> = (meta: MetaDescriptor) => void | ResolvedPolyfill<T>;
 
