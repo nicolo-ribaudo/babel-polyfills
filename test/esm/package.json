@@ -3,7 +3,6 @@
   "name": "@babel-internal/test-esm",
   "devDependencies": {
     "@babel/core": "^7.28.6",
-    "babel-plugin-polyfill-corejs2": "workspace:*",
     "babel-plugin-polyfill-corejs3": "workspace:*",
     "babel-plugin-polyfill-es-shims": "workspace:*",
     "babel-plugin-polyfill-regenerator": "workspace:*"

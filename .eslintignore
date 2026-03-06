@@ -8,4 +8,3 @@ packages/*/lib
 packages/*/esm
 packages/*/test/fixtures
 packages/*/test/spawn-fixtures
-packages/babel-plugin-polyfill-corejs2/data/*

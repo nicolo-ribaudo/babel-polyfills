@@ -17,7 +17,6 @@ const rollupJson = require("@rollup/plugin-json");
 const esmBundles = [
   { name: "babel-helper-define-polyfill-provider", target: "node" },
   { name: "babel-helper-define-polyfill-provider", target: "browser" },
-  { name: "babel-plugin-polyfill-corejs2" },
   { name: "babel-plugin-polyfill-corejs3" },
   { name: "babel-plugin-polyfill-es-shims" },
   { name: "babel-plugin-polyfill-regenerator" },

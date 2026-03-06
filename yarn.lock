@@ -10,7 +10,6 @@ __metadata:
   resolution: "@babel-internal/test-esm@workspace:test/esm"
   dependencies:
     "@babel/core": "npm:^7.28.6"
-    babel-plugin-polyfill-corejs2: "workspace:*"
     babel-plugin-polyfill-corejs3: "workspace:*"
     babel-plugin-polyfill-es-shims: "workspace:*"
     babel-plugin-polyfill-regenerator: "workspace:*"
@@ -4510,22 +4509,6 @@ __metadata:
   checksum: 10/8ec00a1b821ccbfcc432630da66e98bc417f5301f4ce665269d50d245a18ad3ce8a8af2a007f28e3defcd555bb8ce65f16b0d4b6d131bd788e2b97d8b8953332
   languageName: node
   linkType: hard
-
-"babel-plugin-polyfill-corejs2@workspace:*, babel-plugin-polyfill-corejs2@workspace:packages/babel-plugin-polyfill-corejs2":
-  version: 0.0.0-use.local
-  resolution: "babel-plugin-polyfill-corejs2@workspace:packages/babel-plugin-polyfill-corejs2"
-  dependencies:
-    "@babel/compat-data": "npm:^7.28.6"
-    "@babel/core": "npm:^7.28.6"
-    "@babel/helper-define-polyfill-provider": "workspace:^0.6.6"
-    "@babel/helper-plugin-test-runner": "npm:^7.27.1"
-    "@babel/plugin-transform-for-of": "npm:^7.27.1"
-    "@babel/plugin-transform-modules-commonjs": "npm:^7.28.6"
-    semver: "npm:^6.3.1"
-  peerDependencies:
-    "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
-  languageName: unknown
-  linkType: soft
 
 "babel-plugin-polyfill-corejs3@npm:^0.13.0":
   version: 0.13.0

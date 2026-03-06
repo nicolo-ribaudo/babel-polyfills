@@ -88,7 +88,6 @@ If you are interested in reading about all the options supported by these plugin
 <!--prettier-ignore -->
 | Polyfill | Plugin | Methods |
 | :------: | :----: | :-----: |
-| `core-js@2` | [`babel-plugin-polyfill-corejs2`](./packages/babel-plugin-polyfill-corejs2) | `entry-global`, `usage-global` and `usage-pure` |
 | `core-js@3` | [`babel-plugin-polyfill-corejs3`](./packages/babel-plugin-polyfill-corejs3) | `entry-global`, `usage-global` and `usage-pure` |
 | `es-shims` | [`babel-plugin-polyfill-es-shims`](./packages/babel-plugin-polyfill-es-shims) | `usage-global` and `usage-pure` |
 | `regenerator-runtime` | [`babel-plugin-polyfill-regenerator`](./packages/babel-plugin-polyfill-regenerator) | `entry-global`, `usage-global` and `usage-pure` |
