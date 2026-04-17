@@ -270,7 +270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-define-polyfill-provider@workspace:^1.0.0-rc.1, @babel/helper-define-polyfill-provider@workspace:packages/babel-helper-define-polyfill-provider":
+"@babel/helper-define-polyfill-provider@workspace:^1.0.0-rc.2, @babel/helper-define-polyfill-provider@workspace:packages/babel-helper-define-polyfill-provider":
   version: 0.0.0-use.local
   resolution: "@babel/helper-define-polyfill-provider@workspace:packages/babel-helper-define-polyfill-provider"
   dependencies:
@@ -5072,7 +5072,7 @@ __metadata:
   resolution: "babel-plugin-polyfill-corejs3@workspace:packages/babel-plugin-polyfill-corejs3"
   dependencies:
     "@babel/core": "npm:^8.0.0-rc.3 <8.0.0"
-    "@babel/helper-define-polyfill-provider": "workspace:^1.0.0-rc.1"
+    "@babel/helper-define-polyfill-provider": "workspace:^1.0.0-rc.2"
     "@babel/helper-plugin-test-runner": "npm:^8.0.0-rc.3 <8.0.0"
     "@babel/plugin-proposal-decorators": "npm:^8.0.0-rc.3 <8.0.0"
     "@babel/plugin-transform-class-properties": "npm:^8.0.0-rc.3 <8.0.0"
@@ -5094,7 +5094,7 @@ __metadata:
   resolution: "babel-plugin-polyfill-es-shims@workspace:packages/babel-plugin-polyfill-es-shims"
   dependencies:
     "@babel/core": "npm:^8.0.0-rc.3 <8.0.0"
-    "@babel/helper-define-polyfill-provider": "workspace:^1.0.0-rc.1"
+    "@babel/helper-define-polyfill-provider": "workspace:^1.0.0-rc.2"
     "@babel/helper-plugin-test-runner": "npm:^8.0.0-rc.3 <8.0.0"
     array.from: "npm:^1.1.6"
     math.clz32: "npm:^1.0.3"
@@ -5108,7 +5108,7 @@ __metadata:
   resolution: "babel-plugin-polyfill-regenerator@workspace:packages/babel-plugin-polyfill-regenerator"
   dependencies:
     "@babel/core": "npm:^8.0.0-rc.3 <8.0.0"
-    "@babel/helper-define-polyfill-provider": "workspace:^1.0.0-rc.1"
+    "@babel/helper-define-polyfill-provider": "workspace:^1.0.0-rc.2"
     "@babel/helper-plugin-test-runner": "npm:^8.0.0-rc.3 <8.0.0"
     "@babel/plugin-transform-regenerator": "npm:^8.0.0-rc.3 <8.0.0"
     regenerator-runtime: "npm:^0.14.1"
